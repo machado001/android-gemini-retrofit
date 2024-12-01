@@ -2,6 +2,7 @@ package com.machado001.doctranslator.di
 
 import com.machado001.doctranslator.data.remote.GeminiRetrofitPdfTranslator
 import com.machado001.doctranslator.data.remote.TranslationService
+import com.machado001.doctranslator.domain.DocumentTranslator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,7 +29,9 @@ class DiContainer : Container {
         .create<TranslationService>()
 
 
-    override val translator = GeminiRetrofitPdfTranslator(retrofit)
+    override val translator: DocumentTranslator by lazy {
+        GeminiRetrofitPdfTranslator(retrofit)
+    }
 
     companion object {
         const val BASE_URL = "https://generativelanguage.googleapis.com/v1beta/"
