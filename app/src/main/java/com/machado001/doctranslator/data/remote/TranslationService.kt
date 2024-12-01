@@ -13,8 +13,4 @@ interface TranslationService {
         @Query("key") key: String,
         @Body requestBody: RequestBody
     ): TranslationResponse
-
-    companion object {
-        const val BASE_URL = "https://generativelanguage.googleapis.com/v1beta/"
-    }
 }
